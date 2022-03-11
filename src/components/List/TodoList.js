@@ -3,6 +3,9 @@ import {Fragment, useEffect, useState, useContext} from 'react';
 import Container from '../UI/Container/Container';
 import AuthContext from '../../task/auth-context';
 import Header from '../Layout/Header';
+import AddTodoList from '../List/AddTodoList';
+import Backdrop from '../UI/Modal/Backdrop';
+import Button from '../UI/Button/Button';
 import {AiOutlineDelete} from 'react-icons/ai';
 
 const TodoList = props => {
@@ -12,6 +15,7 @@ const TodoList = props => {
 	const taskCtx = useContext(AuthContext);
 	const {onChange, item, clicked, listTask, onDelete, onReset, setItem} = taskCtx;
 
+	let [toUpdate, setToUpdate] = useState();
 	let [btnClick, setBtnClick] = useState(false);
 	const [taskList, setTaskList] = useState([]);
 	const clickHandler = e => {
@@ -24,12 +28,36 @@ const TodoList = props => {
 		onDelete(id);
 		setBtnClick(!btnClick);
 	};
+	let [modalOpen, setModalOpen] = useState(false);
+	
+	const showModal = e => {
+		const id = parseInt(e.target.value);
+		setToUpdate(id);
+		const found = ListItems.filter((el, index) => index === id);
+		setItem(found[0]);
+		
+		// check if the task is done 
+		if(found[0].isDone) onClickItem(found,e);
 
+		setModalOpen(true);
+	}
+
+	const closeModal = () => {
+		setModalOpen(false);
+		onReset();
+	};
 	useEffect(() => {
 		const Items = ListItems.map((item, index) => {
 			return <div key={index} className='list-wrapper border-list'>
 				<div>
-					<p>{item.taskName}</p>
+					<Button
+						type='button'
+						className='btn-edit'
+						onClick={showModal}
+						disabled={false}
+						value={index}
+						label={item.taskName}/>
+
 					<p className='sub-detail'>{item.detail}</p>
 					{item.isDone 
 						? <p className='sub-complete'>Complete</p>
@@ -44,9 +72,13 @@ const TodoList = props => {
 			</div>
 		});
 		setTaskList(Items)
-	}, [listTask,btnClick])
+	}, [listTask,btnClick, modalOpen])
+
+
 	return <Container>
 		<Header/>
+		<Backdrop show={modalOpen}/>
+		<AddTodoList show={modalOpen} taskNo={toUpdate} close={closeModal} action='edit'/>
 		{taskList.length > 0 
 				? <div className='list-container'>{taskList}</div>
 				: <div className='list-container'>
