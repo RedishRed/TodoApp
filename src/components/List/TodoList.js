@@ -18,16 +18,21 @@ const TodoList = props => {
 	let [toUpdate, setToUpdate] = useState();
 	let [btnClick, setBtnClick] = useState(false);
 	const [taskList, setTaskList] = useState([]);
+	
+	// click function for getting the item object and event...
 	const clickHandler = e => {
 		let item = e.target.value;
 		onClickItem(item, e);
 	};
 
+	// delete function for getting id...
 	const onDeleteHandler = e => {
 		const id= parseInt(e.target.value);
 		onDelete(id);
 		setBtnClick(!btnClick);
 	};
+
+	// modal for update function...
 	let [modalOpen, setModalOpen] = useState(false);
 	
 	const showModal = e => {
@@ -46,6 +51,8 @@ const TodoList = props => {
 		setModalOpen(false);
 		onReset();
 	};
+
+	// useeffect for effectively updating the task list... 
 	useEffect(() => {
 		const Items = ListItems.map((item, index) => {
 			return <div key={index} className='list-wrapper border-list'>
