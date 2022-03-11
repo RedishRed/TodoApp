@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600&display=swap');
+
+.border-list:not(:last-child){
+	border-bottom: 1px solid #c4c4c4;
+}
+.list-wrapper{
+	padding: 0.5rem 1rem;
+	display: flex;
+	justify-content: space-between;
+	transition: 0.3s ease-in-out;
+}
+.list-container{
+	padding: 0 0.5rem 0.5rem 0.5rem;
+	max-height: 300px;
+	overflow: auto;
+}
+.list-container > p{
+	text-align: center;
+	color: #C4c4c4;
+}
+.btn-edit{
+	background-color: transparent;
+	border: none;
+	font-size: 1rem;
+	font-weight: bold;
+	padding: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #4361ee;
+    cursor: pointer;
+}
+.sub-detail{
+	margin: 0;
+	font-size: 0.75rem;
+    font-family: 'Poppins', sans-serif;
+    color: #231F20;
+    max-width: 300px;
+    text-align: justify;
+}
+.list-wrapper:hover .btn-delete{
+	display: inline; 
+} 
+.btn-delete{
+	background: #FFFFFF;
+	border: none;
+	font-size: 1rem;
+	color: #e63946;
+	cursor: pointer;
+	display: none;
+	transition: 0.3s ease-in-out;
+}
+.btn-delete:hover{
+	color: #d00000;
+}
+.icon-delete{
+	pointer-events: none;
+}
+.sub-in-progress{
+	font-size: 0.6rem;
+	margin-top: 0.5rem;
+	background-color: #ffb703;
+	color: #FFFFFF;
+	padding: 0.1rem 0.2rem;
+	border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    width: max-content;
+}
+.sub-complete{
+	font-size: 0.6rem;
+	margin-top: 0.5rem;
+	background-color: #90be6d;
+	color: #FFFFFF;
+	padding: 0.1rem 0.2rem;
+	border-radius: 5px;
+    font-family: 'Poppins', sans-serif;	
+    width: max-content;
+}
