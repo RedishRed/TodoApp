@@ -1,0 +1,37 @@
+.header-wrapper{
+	background: #4361ee;
+	padding: 0.8rem;
+	position: relative;
+	margin-bottom: 2rem;
+}
+.header-wrapper > p{
+	margin: 0;
+}
+.btn-add{
+	border-radius: 50%;
+	border: none;
+	background-color: #FFFFFF;
+	font-size: 1.8rem;
+	width: 40px;
+	height: 40px;
+	color: #4361ee;
+	position: absolute;
+	right: 10px;
+	top: 110px;
+	box-shadow: 0 0 16px #4361ee;
+	cursor: pointer;
+	outline: none;
+}
+.btn-add:hover{
+	background-color: #f1faee;
+}
+.btn-add:active{
+	background-color: #f1faee;
+}
+.title{
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.5rem;
+	padding: 0 0.5rem;
+	color: #FFFFFF;
+}

@@ -2,6 +2,7 @@ import './TodoList.css';
 import {Fragment, useEffect, useState, useContext} from 'react';
 import Container from '../UI/Container/Container';
 import AuthContext from '../../task/auth-context';
+import Header from '../Layout/Header';
 
 const TodoList = props => {
 	// props values... 
@@ -20,6 +21,7 @@ const TodoList = props => {
 		</div>
 	});
 	return <Container>
+		<Header/>
 		{Items}		
 	</Container>
 }
