@@ -7,8 +7,8 @@ import {useState} from 'react';
 
 export default function Header(){
 	let [modalOpen, setModalOpen] = useState(false);
-	const showModal = () => setModalOpen(true)
-	const closeModal = () => setModalOpen(false)
+	const showModal = () => setModalOpen(true);
+	const closeModal = () => setModalOpen(false);
 
 	const modalHandler = () => {
 		console.log('click');
@@ -16,6 +16,7 @@ export default function Header(){
 
 	return <div>
 		<Backdrop show={modalOpen}/>
+		<AddTodoList show={modalOpen} close={closeModal}/>
 		<div className='header-wrapper'>
 			<Clock/>
 			<p className='title'> Tasks</p>	
